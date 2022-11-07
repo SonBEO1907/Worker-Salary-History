@@ -98,5 +98,11 @@ public class DataUpdater implements WorkerData{
 
 //File Diagram
 /*
-
+Load Worker Data -> Add -> Update Worker Data
+---------------------------------------------
+Load Worker Data -> Up salary -> Update Worker Data, Update Salary History
+---------------------------------------------
+Load Worker Data -> Down salary -> Update Worker Data, Update Salary History
+---------------------------------------------
+Load Salary History -> Display
 */
