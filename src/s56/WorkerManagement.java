@@ -20,9 +20,9 @@ public class WorkerManagement extends ExceptionHandling implements WorkerData{
         du.loadWorkerData();
         System.out.println("----------Add Worker-----------");
         System.out.print("Enter Code:");
-        String code = getString();
+        String code = getString().toUpperCase();
         while (isWorkerAlreadyExist(code)){
-            code = getString();
+            code = getString().toUpperCase();
         }
         System.out.print("Enter Name:");
         String name = getString();
