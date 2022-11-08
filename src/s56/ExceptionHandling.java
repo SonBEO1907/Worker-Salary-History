@@ -57,6 +57,7 @@ public class ExceptionHandling {
             try {
                 String result =  sc.nextLine().trim();
                 if (result.equals("")) throw new EmptyStringException();
+                return result;
             } catch (EmptyStringException e) {
                 System.out.println("String cannot be empty. Please re-enter: ");
             }
