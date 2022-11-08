@@ -28,6 +28,8 @@ public class ExceptionHandling {
                 return age;
             } catch (AgeOutOfBoundException e) {
                 System.out.print("Age must be between 18 and 50. Please re-enter: ");
+            } catch (NumberFormatException e){
+                System.out.print("Age must be digit. Please re-enter: ");
             }
         }
     }
