@@ -32,16 +32,16 @@ public class WorkerManagement extends ExceptionHandling implements WorkerData{
         double salary = getSalary();
         System.out.print("Enter work location:");
         String location = getString();
-        worker.add(new Worker(code, name, age, salary, location));
+        workerList.add(new Worker(code, name, age, salary, location));
         du.updateWorkerData();
     }
     
     
     //Search worker method that return a worker
     Worker searchWorker(String code){
-        for (int i=0;i<worker.size();i++){
-            if(worker.get(i).getCode().equalsIgnoreCase(code)){
-                return worker.get(i);
+        for (int i=0;i<workerList.size();i++){
+            if(workerList.get(i).getCode().equalsIgnoreCase(code)){
+                return workerList.get(i);
             }
         }
         return null;
@@ -67,14 +67,14 @@ public class WorkerManagement extends ExceptionHandling implements WorkerData{
     public void upSalary(Worker target, double salaryUpdate) throws Exception{
         target.setSalary(target.getSalary()+salaryUpdate);
         du.updateWorkerData();
-        salaryHistory.add(new SalaryHistory("UP",getDate() , target.getCode(), target.getName(), target.getAge(), target.getSalary(), target.getLocation()));
+        salaryHistoryList.add(new SalaryHistory("UP",getDate() , target.getCode(), target.getName(), target.getAge(), target.getSalary(), target.getLocation()));
         du.updateHistoryData();
     }
     
     //up salary GUI
     public void upSalary() throws Exception{
         du.loadWorkerData();
-        if (isListEmpty(worker)){
+        if (isListEmpty(workerList)){
             System.out.println("Worker Database is empty.");
             return;
         }
@@ -95,14 +95,14 @@ public class WorkerManagement extends ExceptionHandling implements WorkerData{
     public void downSalary(Worker target, double salaryUpdate) throws Exception{
         target.setSalary(target.getSalary()-salaryUpdate);
         du.updateWorkerData();
-        salaryHistory.add(new SalaryHistory("DOWN",getDate() , target.getCode(), target.getName(), target.getAge(), target.getSalary(), target.getLocation()));
+        salaryHistoryList.add(new SalaryHistory("DOWN",getDate() , target.getCode(), target.getName(), target.getAge(), target.getSalary(), target.getLocation()));
         du.updateHistoryData();
     }
     
     //down salary GUI
     public void downSalary() throws Exception{
         du.loadWorkerData();
-        if (isListEmpty(worker)){
+        if (isListEmpty(workerList)){
             System.out.println("Worker Database is empty.");
             return;
         }
@@ -122,7 +122,7 @@ public class WorkerManagement extends ExceptionHandling implements WorkerData{
     //display worker salary history
     public void displaySalaryHistory() throws Exception{
         du.loadHistoryData();
-        if (isListEmpty(salaryHistory)){
+        if (isListEmpty(salaryHistoryList)){
             System.out.println("Salary History is empty");
             return;
         }
@@ -134,7 +134,7 @@ public class WorkerManagement extends ExceptionHandling implements WorkerData{
             System.out.printf("%-10s%-30s%-10s%-15s%-15s%-20s\n",sh.getCode(),sh.getName(),sh.getAge(),sh.getSalary(),sh.getStatus(),sh.getDate());
         }
         */
-        salaryHistory.forEach((sh) -> {
+        salaryHistoryList.forEach((sh) -> {
             System.out.printf("%-10s%-30s%-10s%-15s%-15s%-20s\n",sh.getCode(),sh.getName(),sh.getAge(),sh.getSalary(),sh.getStatus(),sh.getDate());
         });
     }

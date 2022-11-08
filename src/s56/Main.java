@@ -5,10 +5,10 @@ import java.util.Scanner;
     
     //To-do:
     //data class Worker : Code, Name, Age, Salary, Location
-    //data class SalaryHistory: super(Worker), Status
-    //Function:add, up salary, sown salary, display
+    //data class SalaryHistory: super(Worker), Status, Date
+    //Function:add, up salary, down salary, display
     //Database: List, record type file.
-
+    //Exceptions:Age, Salary, List Empty, Not Found, Choice.
 
 /**
  *
