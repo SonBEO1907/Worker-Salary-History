@@ -1,1 +1,4 @@
-DOWN 07/11/2022 W1 John_Smith 20 2000.0 New_York
+UP 08/11/2022 W2 Hidetaka_Miyazaki 30 8000.0 Tokyo
+UP 08/11/2022 W4 Trung 20 200.0 Ha_Noi
+UP 08/11/2022 W5 Nguyen_Minh_Son 20 40000.0 Viet_Nam
+DOWN 08/11/2022 W5 Nguyen_Minh_Son 20 20000.0 Viet_Nam

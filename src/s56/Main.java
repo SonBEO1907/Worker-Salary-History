@@ -49,7 +49,7 @@ public class Main{
                 case 3: wm.downSalary();break;
                 case 4: wm.displaySalaryHistory();
                 case 5: break;
-                default: System.out.print("Invalid input. Re-enter:");
+                default: System.out.println("Invalid input.");
             }
         } while (choice!=5);
     }
