@@ -10,6 +10,6 @@ import s56.Worker;
  * @author son75
  */
 public interface WorkerData {
-     List<Worker> worker = new ArrayList<>();
-    List<SalaryHistory> salaryHistory = new ArrayList<>();
+    List<Worker> workerList = new ArrayList<>();
+    List<SalaryHistory> salaryHistoryList = new ArrayList<>();
 }

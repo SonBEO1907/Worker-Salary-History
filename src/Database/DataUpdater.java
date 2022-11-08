@@ -33,7 +33,7 @@ public class DataUpdater implements WorkerData{
     public void updateWorkerData() throws Exception{
         cleanWorkerData();
         RandomAccessFile f = new RandomAccessFile("WorkerData.dat", "rw");
-        for (Worker w: worker){
+        for (Worker w: workerList){
             f.writeBytes(w.getCode().replace(" ","_")+" "+w.getName().replace(" ","_")+" "+w.getAge()+" "+w.getSalary()+" "+ w.getLocation().replace(" ","_"));
             f.writeBytes("\r\n");
         }
@@ -43,7 +43,7 @@ public class DataUpdater implements WorkerData{
     public void updateHistoryData() throws Exception{
         cleanHistoryData();
         RandomAccessFile f = new RandomAccessFile("SalaryHistoryData.dat","rw");
-        for (SalaryHistory sh: salaryHistory){
+        for (SalaryHistory sh: salaryHistoryList){
             f.writeBytes(sh.getStatus() +" "+ sh.getDate() +" "+ sh.getCode().replace(" ","_") +" "+ sh.getName().replace(" ","_")+" "+sh.getAge()+" "+sh.getSalary()+" "+sh.getLocation().replace(" ","_"));
             f.writeBytes("\r\n");
         }
@@ -52,7 +52,7 @@ public class DataUpdater implements WorkerData{
     //load Worker data and add to list
     //String Code, String Name, int age, double salary, String location
     public void loadWorkerData() throws Exception{
-        worker.clear();
+        workerList.clear();
         RandomAccessFile f = new RandomAccessFile("WorkerData.dat", "rw");
         StringTokenizer t;
         try {
@@ -65,7 +65,7 @@ public class DataUpdater implements WorkerData{
                 int age = Integer.parseInt(t.nextToken());
                 double salary = Double.parseDouble(t.nextToken());
                 String location = t.nextToken();
-                worker.add(new Worker(code.replace("_"," "), name.replace("_"," "), age, salary, location.replace("_"," ")));
+                workerList.add(new Worker(code.replace("_"," "), name.replace("_"," "), age, salary, location.replace("_"," ")));
             }
         } catch (IOException | NumberFormatException e) {
         }
@@ -74,7 +74,7 @@ public class DataUpdater implements WorkerData{
     //Load Salary Update History and add to list
     //String status, String date, String Code, String Name, int age, double salary, String location
     public void loadHistoryData() throws Exception{
-        salaryHistory.clear();
+        salaryHistoryList.clear();
         RandomAccessFile f = new RandomAccessFile("SalaryHistoryData.dat","rw");
         StringTokenizer t;
         try {
@@ -89,7 +89,7 @@ public class DataUpdater implements WorkerData{
                 int age = Integer.parseInt(t.nextToken());
                 double salary = Double.parseDouble(t.nextToken());
                 String location = t.nextToken();
-                salaryHistory.add(new SalaryHistory(status,date,code.replace("_"," "), name.replace("_"," "), age, salary, location.replace("_"," ")));
+                salaryHistoryList.add(new SalaryHistory(status,date,code.replace("_"," "), name.replace("_"," "), age, salary, location.replace("_"," ")));
             }
         } catch (IOException | NumberFormatException e) {
         }

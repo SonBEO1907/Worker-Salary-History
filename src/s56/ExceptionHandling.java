@@ -8,6 +8,7 @@ import Exception.PoorWorkerException;
 import Exception.InvalidChoiceException;
 import Exception.ListEmptyException;
 import Exception.WorkerAlreadyExistException;
+import Exception.EmptyStringException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -29,7 +30,7 @@ public class ExceptionHandling {
             } catch (AgeOutOfBoundException e) {
                 System.out.print("Age must be between 18 and 50. Please re-enter: ");
             } catch (NumberFormatException e){
-                System.out.print("Age must be digit. Please re-enter: ");
+                System.out.println("Age must be digit. Please re-enter: ");
             }
         }
     }
@@ -52,7 +53,14 @@ public class ExceptionHandling {
     
     // Exception Handling for String type data
     public String getString(){
-        return sc.nextLine().trim();
+        while (true) {            
+            try {
+                String result =  sc.nextLine().trim();
+                if (result.equals("")) throw new EmptyStringException();
+            } catch (EmptyStringException e) {
+                System.out.println("String cannot be empty. Please re-enter: ");
+            }
+        }
     }
     
     public boolean isWorkerExist(Worker worker){
@@ -74,6 +82,8 @@ public class ExceptionHandling {
                 return salaryNew;
             } catch (SalaryNotChangedException e) {
                 System.out.print("Salary cannot be updated. Please re-enter: ");
+            } catch (NumberFormatException e){
+                System.out.println("Salary must be digit. Please re-enter: ");
             }
         }
     }
@@ -111,6 +121,8 @@ public class ExceptionHandling {
                 else {
                     System.out.print("Re-enter:");
                 }
+            } catch (NumberFormatException e){
+                System.out.println("Salary must be digit. Please re-enter: ");
             }
         }
     }
